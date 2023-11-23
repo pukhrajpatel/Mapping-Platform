@@ -1,11 +1,29 @@
 import React from 'react'
-import signInPic from '../Assets/sign-in-pic.png';
+import { COLORS } from '../Assets/Style/Colors';
+import NationWithNamoLogo from '../Assets/NationWithNamo.png';
 
 function SignUp() {
     return (
         <div style={{ display: 'flex', width: '100vw', height: '100vh', position: 'fixed' }}>
-            <div style={{ flex: 2, padding: '20px', backgroundColor: 'lightblue' }}>
+            {/* <div style={{ flex: 2, padding: '20px', backgroundColor: 'lightblue' }}>
                 <img className="mb-4" src={signInPic} style={{ width: '100%', "max-height": '100%', objectFit: 'cover' }} />
+            </div> */}
+            <div style={{ width: '65vw' }}>
+                <div style={{ display: 'flex', flexDirection: 'raw', border: '2vw solid #ADD8E6' }}>
+                    <div style={{
+                        justifyContent: 'center', width: '25vw', backgroundColor: COLORS.bgColor,
+                        display: 'flex', height: '92vh'
+                    }}>
+                        <img className="mb-4" src={NationWithNamoLogo} style={{ padding: '120px' }} />
+                    </div>
+                    <div style={{
+                        backgroundColor: COLORS.bgColor, width: '45vw', height: '92vh',
+                        display: 'flex', flexDirection: 'column', justifyContent: 'center'
+                    }}>
+                        {/* <h1 style={{'font-size': '72px', fontFamily: 'Roboto, sans-serif'}}>Nation With Namo</h1> */}
+                        <h3 style={{ 'font-size': '84px', color: 'white' }}> DE Portal</h3>
+                    </div>
+                </div>
             </div>
             <div style={{ flex: 1, padding: '10px', backgroundColor: 'white' }}>
                 <main className="form-signin m-auto">
@@ -31,7 +49,7 @@ function SignUp() {
                                 Remember me
                             </label>
                         </div>
-                        <button className="btn btn-primary w-100 py-2" type="submit" style={{ backgroundColor: '#FC721D' }}>Sign Up</button>
+                        <button className="btn btn-primary w-100 py-2" type="submit" style={{ backgroundColor: COLORS.bgColor }}>Sign Up</button>
                         <p className="mt-5 mb-3 text-body-secondary">&copy; Nation With NaMo 2023</p>
                     </form>
                 </main>

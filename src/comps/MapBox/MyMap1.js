@@ -18,7 +18,9 @@ const MyMap1 = () => {
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
   }, []);
 
-  return <div id="map1" style={{ height: '470px', width: '570px' }} />;
+  return <div id="map1" style={{ height: '470px', width: '47vw', 
+  backgroundColor: '#f0f0f0', margin: '20px',padding: '20px'
+  ,boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.1)'}} />;
 };
 
 export default MyMap1;

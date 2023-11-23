@@ -18,7 +18,7 @@ const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-      <div className={themeClass}>{children}</div>
+      <div className={themeClass} style={{display: 'block'}}>{children}</div>
     </ThemeContext.Provider>
   );
 };

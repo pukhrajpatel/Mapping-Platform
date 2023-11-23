@@ -1,14 +1,30 @@
 import { React } from 'react';
-import signInPic from '../Assets/sign-in-pic.png';
 import { useNavigate, Link } from 'react-router-dom'
+import { COLORS } from '../Assets/Style/Colors';
+import NationWithNamoLogo from '../Assets/NationWithNamo.png';
 
 function Login() {
     const navigate = useNavigate();
     return (
         <div style={{ display: 'flex', width: '100vw', height: '100vh', position: 'fixed'}}>
-            <div style={{ flex: 2, padding: '20px', backgroundColor: 'lightblue' }}>
-                <img className="mb-4" src={signInPic} style={{ width: '100%', "max-height": '100%', objectFit: 'cover' }} />
+            <div style={{ width: '65vw' }}>
+                <div style={{ display: 'flex', flexDirection: 'raw', border: '2vw solid #ADD8E6' }}>
+                    <div style={{
+                        justifyContent: 'center', width: '25vw', backgroundColor: COLORS.bgColor,
+                        display: 'flex', height: '92vh'
+                    }}>
+                        <img className="mb-4" src={NationWithNamoLogo} style={{ padding: '120px' }} />
+                    </div>
+                    <div style={{
+                        backgroundColor: COLORS.bgColor, width: '45vw', height: '92vh',
+                        display: 'flex', flexDirection: 'column', justifyContent: 'center'
+                    }}>
+                        {/* <h1 style={{'font-size': '72px', fontFamily: 'Roboto, sans-serif'}}>Nation With Namo</h1> */}
+                        <h3 style={{ 'font-size': '84px', color: 'white' }}> DE Portal</h3>
+                    </div>
+                </div>
             </div>
+            
 
             <div style={{ flex: 1, padding: '10px', backgroundColor: 'white' }}>
                 <main className="form-signin m-auto">
@@ -31,11 +47,11 @@ function Login() {
                                 Remember me
                             </label>
                         </div>
-                        <button className="btn btn-primary w-100 py-2" type="submit" style={{ backgroundColor: '#FC721D' }} onClick={() => navigate('/home')}>Sign in</button>
+                        <button className="btn btn-primary w-100 py-2" type="submit" style={{ backgroundColor: COLORS.bgColor }} onClick={() => navigate('/home')}>Sign in</button>
 
                         <div style = {{display:'flex', flexDirection:'row'}}>
                             <h6 style={{ margin: '2rem 1rem 0rem 0rem' }}>Don't have an account ?</h6>
-                            <Link to='/signup' style={{ color: '#FC721D', 'font-weight': 'bold', display:'flex', flexDirection:'column-reverse'}}>Register here!</Link>
+                            <Link to='/signup' style={{ color: COLORS.bgColor, 'font-weight': 'bold', display:'flex', flexDirection:'column-reverse'}}>Register here!</Link>
                         </div>
 
                         <p className="mt-5 mb-3 text-body-secondary">&copy; Nation With NaMo 2023</p>

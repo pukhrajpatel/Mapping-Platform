@@ -16,8 +16,14 @@ import { fakeData } from './makeData';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const Example = () => {
+import { COLORS } from '../Assets/Style/Colors';
+
+const Example = (props) => {
   const [validationErrors, setValidationErrors] = useState({});
+  const AC = props.propt.AC;
+  const state = props.propt.state;
+  const Year = props.propt.Year;
+  const ElType = props.propt.ElType;
 
   const columns = useMemo(
     () => [
@@ -196,7 +202,6 @@ const Example = () => {
       deleteUser(row.original.id);
     }
   };
-
   const table = useMaterialReactTable({
     columns,
     data: fetchedUsers,
@@ -204,6 +209,20 @@ const Example = () => {
     editDisplayMode: 'row', // ('modal', 'cell', 'table', and 'custom' are also available)
     enableEditing: true,
     enablePagination: false,
+    enableStickyHeader: true,
+    
+    // muiColumnActionsButtonProps: {
+    //   sx: {
+    //     color: COLORS.bgColor,
+    //   }
+    // },
+
+    muiTableHeadCellProps: {
+      sx: {
+        backgroundColor:COLORS.bgColor,
+      },
+    },
+
     getRowId: (row) => row.id,
     muiToolbarAlertBannerProps: isLoadingUsersError
       ? {
@@ -214,6 +233,8 @@ const Example = () => {
     muiTableContainerProps: {
       sx: {
         minHeight: '500px',
+        width: '100vw',
+        overflowX: 'hidden',
       },
     },
     onCreatingRowCancel: () => setValidationErrors({}),
@@ -235,20 +256,16 @@ const Example = () => {
       </Box>
     ),
     renderTopToolbarCustomActions: ({ table }) => (
-      <Button
-        variant="contained"
-        onClick={() => {
-          table.setCreatingRow(true); //simplest way to open the create row modal with no default values
-          //or you can pass in a row object to set default values with the `createRow` helper function
-          // table.setCreatingRow(
-          //   createRow(table, {
-          //     //optionally pass in default values for the new row, useful for nested data or other complex scenarios
-          //   }),
-          // );
-        }}
-      >
-        Add New Entry
-      </Button>
+      <div>
+        <Button variant="contained" onClick={() => {table.setCreatingRow(true)}}
+        style = {{backgroundColor:COLORS.bgColor, marginRight:'20px'}}>
+          Add New Entry
+        </Button>
+        <Button variant="contained" onClick={() => {}}
+        style = {{backgroundColor:COLORS.bgColor}}>
+          Save Work
+        </Button>
+      </div>
     ),
     state: {
       isLoading: isLoadingUsers,
@@ -258,7 +275,10 @@ const Example = () => {
     },
   });
 
-  return <MaterialReactTable table={table} />;
+  return (<div>
+    <p>{state + " " +AC+ " " +Year+ " " +ElType}</p>
+    <MaterialReactTable table={table} />
+  </div>)
 };
 
 //CREATE hook (post new user to api)
@@ -339,12 +359,14 @@ function useDeleteUser() {
 
 const queryClient = new QueryClient();
 
-const ExampleWithProviders = () => (
+function ExampleWithProviders(props){
   //Put this with your other react-query providers near root of your app
+  return (
   <QueryClientProvider client={queryClient}>
-    <Example />
+    <Example propt = {props} />
   </QueryClientProvider>
-);
+  )
+}
 
 export default ExampleWithProviders;
 
